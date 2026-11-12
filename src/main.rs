@@ -28,7 +28,10 @@ fn is_config_exist() -> bool {
 }
 
 fn print_usage() {
-
+    println!("Samoyed Remote Build");
+    println!("Usage: samoyed <options>\n");
+    println!("Options:");
+    println!("\t-h, --help  Show this help message.");
 }
 
 fn main() {
@@ -40,7 +43,10 @@ fn main() {
     if args.len() > 0 {
         // If there is other params
         for cur in args {
-
+            match cur.as_str() {
+                "-h" | "--help" => print_usage(),
+                _ => eprintln!("Warn: Unknown command \"{cur}\". This argument will be omitted.")
+            }
         }
     }
 
